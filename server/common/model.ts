@@ -1,5 +1,4 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
- 
 @Entity()
 export class Photo {
   @PrimaryGeneratedColumn()
@@ -28,16 +27,16 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ default: '' })
   firstName: string;
 
   @Column()
   name: string;
 
-  @Column()
+  @Column({ default: 18 })
   age: number;
 
-  @Column()
+  @Column({ default: '' })
   email: string;
 
   @Column({
@@ -47,6 +46,6 @@ export class User {
   })
   status?: 'Happy' | 'Sad';
 
-  @Column({ type: 'set' })
+  @Column({ type: 'simple-array' })
   phoneNumbers: string[];
 }
