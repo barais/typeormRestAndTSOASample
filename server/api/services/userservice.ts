@@ -1,18 +1,15 @@
 // src/users/usersService.ts
 import { User } from '../../common/model';
+import { getRepository } from 'typeorm';
 
 // A post request should not contain an id.
 export type UserCreationParams = Pick<User, 'email' | 'name' | 'phoneNumbers'>;
 
 export class UsersService {
-  public get(id: number, name?: string): User {
-    return {
-      id,
-      email: 'jane@doe.com',
-      name: name ?? 'Jane Doe',
-      status: 'Happy',
-      phoneNumbers: [],
-    };
+  private userRepository = getRepository(User);
+
+  public async get(id: number): User {
+    return this.userRepository.findOne(id);
   }
 
   public create(userCreationParams: UserCreationParams): User {

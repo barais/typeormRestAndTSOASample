@@ -1,7 +1,52 @@
-export interface User {
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+ 
+@Entity()
+export class Photo {
+  @PrimaryGeneratedColumn()
   id: number;
-  email: string;
+
+  @Column({
+    length: 100,
+  })
   name: string;
+
+  @Column('text')
+  description: string;
+
+  @Column()
+  filename: string;
+
+  @Column('double')
+  views: number;
+
+  @Column()
+  isPublished: boolean;
+}
+
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  firstName: string;
+
+  @Column()
+  name: string;
+
+  @Column()
+  age: number;
+
+  @Column()
+  email: string;
+
+  @Column({
+    type: 'enum',
+    enum: ['Happy', 'Sad'],
+    default: 'Happy',
+  })
   status?: 'Happy' | 'Sad';
+
+  @Column({ type: 'set' })
   phoneNumbers: string[];
 }
