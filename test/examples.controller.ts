@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import 'mocha';
 import { expect } from 'chai';
 import request from 'supertest';
-import Server from '../server';
+/*import Server from '../server';
 
 describe('Examples', () => {
   it('should get all examples', () =>
@@ -36,4 +37,4 @@ describe('Examples', () => {
           .that.has.property('name')
           .equal('test');
       }));
-});
+});*/
